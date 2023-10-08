@@ -20,7 +20,20 @@ class App {
     fetch(url).then(response =>{
       return response.json();
     }).then(data => {
-      document.querySelector("#app").innerHTML = data.current_weather.temperature;
+      const currentTemperature = data.current_weather.temperature;
+      let message = "";
+        switch (true) {
+          case currentTemperature < 10:
+            message = `${currentTemperature} It's cold`;
+            break;
+          case currentTemperature >= 10 && currentTemperature <= 20:
+            message = `${currentTemperature} It's chilly`;
+            break;
+          case currentTemperature >= 20:
+            message = `${currentTemperature} It's warm`;
+            break;
+        }
+      document.querySelector("#app").innerHTML = message;
     })
     .catch(err => {
       console.log(err);
