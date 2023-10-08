@@ -16,11 +16,11 @@ class App {
     this.getWeather();
   }
   getWeather(){
-    let url = `https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lng}&hourly=temperature_2m`;
+    let url = `https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lng}&hourly=temperature_2m&current_weather=true&timezone=auto`;
     fetch(url).then(response =>{
       return response.json();
     }).then(data => {
-      console.log(data);
+      document.querySelector("#app").innerHTML = data.current_weather.temperature;
     })
     .catch(err => {
       console.log(err);
