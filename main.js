@@ -80,6 +80,7 @@ class App {
           const image = new Image();
           image.setAttribute("src", cocktailImage);
           image.setAttribute("alt", cocktailName);
+          image.style.maxWidth = "300px"; 
           document.querySelector("#drinkImage").appendChild(image);
 
         } else {
