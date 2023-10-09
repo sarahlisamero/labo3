@@ -1,8 +1,8 @@
 class App {
   constructor(){
     this.getLocation();
-    this.lat;
-    this.lng;
+    /*this.lat;
+    this.lng;*/
   }
   getLocation(){
     navigator.geolocation.getCurrentPosition(
@@ -32,6 +32,8 @@ class App {
           case currentTemperature >= 20:
             message = `Right now it is ${currentTemperature} degrees. That's warm, puff puff!`;
             break;
+          default:
+            message = `Right now it is ${currentTemperature} degrees. That's an unusual temperature!`;
         }
       document.querySelector("#app").innerHTML = message;
       this.recommendCocktail(currentTemperature);
@@ -45,7 +47,7 @@ class App {
 
     switch (true) {
       case currentTemperature < 10:
-        mcocktailCategory = "Cocoa";
+        cocktailCategory = "Cocoa";
         break;
       case currentTemperature >= 10 && currentTemperature <= 20:
         cocktailCategory = "Ordinary_Drink";
@@ -53,6 +55,8 @@ class App {
       case currentTemperature >= 20:
         cocktailCategory = "Cocktail";
         break;
+      default:
+        cocktailCategory = "Unknown";
     }
     
     this.fetchRandomCocktail(cocktailCategory);
